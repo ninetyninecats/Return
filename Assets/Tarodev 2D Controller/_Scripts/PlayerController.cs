@@ -45,6 +45,9 @@ namespace TarodevController
             SaveFile.SetDoubleJump(true);
             SaveFile.SaveToFile();
         }
+        private void Start() {
+            gameObject.GetComponent<PlayerStats>().Die();
+        }
 
         private void Update()
         {

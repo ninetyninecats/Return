@@ -7,21 +7,21 @@ public class PlayerStats : MonoBehaviour
 {
     private int startingHealth = 5;
     private int currentHealth;
-    private GameObject spawnRoom;
-    private Vector3 spawnPoint;
+    [SerializeField] private GameObject spawnRoom;
+    [SerializeField] private Vector3 spawnPoint;
     private float iFramesSeconds = 1;
 
     private void Awake()
     {
         currentHealth = startingHealth;
-        switch (SaveFile.GetSavePoint())
-        {
-            case 0:
-                spawnRoom = (GameObject)Resources.Load("Levels/Room0");
-                spawnPoint = new Vector3(-5, 5, 0);
-                break;
-            default: throw new NotImplementedException();
-        }
+        // switch (SaveFile.GetSavePoint())
+        // {
+        //     case 0:
+        //         spawnRoom = (GameObject)Resources.Load("Levels/Room0");
+        //         spawnPoint = new Vector3(-5, 5, 0);
+        //         break;
+        //     default: throw new NotImplementedException();
+        // }
     }
     public void TakeDamage(int damage)
     {

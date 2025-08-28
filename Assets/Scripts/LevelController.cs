@@ -19,7 +19,7 @@ public class LevelController : MonoBehaviour
                 if (playerPosition.x > 7) playerPosition += new Vector3(-1, -0.5f, 0);
                 if (playerPosition.x < -7) playerPosition += new Vector3(1, -0.5f, 0);
                 if (playerPosition.y > 5) playerPosition.y -= 1;
-                if (playerPosition.y < -5) playerPosition.y += 1;
+                if (playerPosition.y < -5) playerPosition.y += 4;
                 Debug.Log(playerPosition);
                 player.GetComponent<PlayerController>().WarpTo(playerPosition);
                 break;
