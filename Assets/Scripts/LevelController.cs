@@ -28,10 +28,10 @@ public class LevelController : MonoBehaviour
     }
     public static void LoadLevel(GameObject room, Vector3 playerPosition, GameObject player)
     {
+        player.GetComponent<PlayerController>().WarpTo(playerPosition);
         GameObject level = GameObject.FindWithTag("Level");
         Destroy(level);
         GameObject newRoom = Instantiate(room);
         newRoom.name = room.name;
-        player.GetComponent<PlayerController>().WarpTo(playerPosition);
     }
 }
