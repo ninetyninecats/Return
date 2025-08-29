@@ -286,10 +286,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.20000002
+    y: 0.1
+    width: 0.6
+    height: 0.8
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -675,14 +675,14 @@ PrefabInstance:
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnRoom
       value: 
-      objectReference: {fileID: 5717782592819514310, guid: 420a1822f87e9bbc58be4938bcdf8522, type: 3}
+      objectReference: {fileID: 5717782592819514310, guid: 2eb5243a6a15650498eee0d54302fed2, type: 3}
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnPoint.x
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnPoint.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

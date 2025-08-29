@@ -91,6 +91,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb88718e76e47c0c9c5d819fb7f0fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTransition
-  room: {fileID: 0}
-  playerPosition: {x: 0, y: 0, z: 0}
-  player: {fileID: 978220885957929827, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
+  room: {fileID: 5717782592819514310, guid: 28ad0dbbee43d794bbb57dfd191b2ef3, type: 3}
