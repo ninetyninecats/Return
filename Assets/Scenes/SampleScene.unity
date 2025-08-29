@@ -618,14 +618,14 @@ PrefabInstance:
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnRoom
       value: 
-      objectReference: {fileID: 5717782592819514310, guid: 6f86bab0c125f694cbf1e7d59a45e748, type: 3}
+      objectReference: {fileID: 5717782592819514310, guid: 420a1822f87e9bbc58be4938bcdf8522, type: 3}
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnPoint.x
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnPoint.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
