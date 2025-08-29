@@ -920,6 +920,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1555970709}
+    - target: {fileID: 3115229310701323803, guid: 19608db88aef3f03686c48997f4b4c2a, type: 3}
       propertyPath: spawnRoom
       value: 
       objectReference: {fileID: 5717782592819514310, guid: 2eb5243a6a15650498eee0d54302fed2, type: 3}

@@ -22,6 +22,9 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+        private float dashCooldown = 1;
+        private float dashCooldownTimer;
+        private bool isDashing;
 
         #region Interface
 
@@ -52,6 +55,7 @@ namespace TarodevController
         private void Update()
         {
             _time += Time.deltaTime;
+            dashCooldownTimer += Time.deltaTime;
             GatherInput();
         }
 
@@ -81,17 +85,19 @@ namespace TarodevController
         private void FixedUpdate()
         {
             CheckCollisions();
+            if (!isDashing)
+            {
+                HandleJump();
+                HandleDirection();
+                HandleGravity();
 
-            HandleJump();
-            HandleDirection();
-            HandleGravity();
-
-            ApplyMovement();
-            if (this._frameInput.Move.x > 0.001f) transform.localScale = Vector3.one;
-            else if (this._frameInput.Move.x < -0.001f) transform.localScale = new Vector3(-1, 1, 1);
-            animator.SetBool("isWalking", _frameInput.Move != Vector2.zero);
-            animator.SetBool("isGrounded", _grounded);
-
+                ApplyMovement();
+                if (this._frameInput.Move.x > 0.001f) transform.localScale = Vector3.one;
+                else if (this._frameInput.Move.x < -0.001f) transform.localScale = new Vector3(-1, 1, 1);
+                animator.SetBool("isWalking", _frameInput.Move != Vector2.zero);
+                animator.SetBool("isGrounded", _grounded);
+            }
+            if (Input.GetKeyDown(KeyCode.C)) StartCoroutine(Dash());
         }
 
         #region Collisions
@@ -211,6 +217,25 @@ namespace TarodevController
         {
             var rigidBody2D = GetComponent<Rigidbody2D>();
             rigidBody2D.position = position;
+        }
+        public IEnumerator Dash()
+        {
+            if (dashCooldownTimer < dashCooldown) yield return null;
+            var rigidBody2D = GetComponent<Rigidbody2D>();
+            isDashing = true;
+            float startTime = Time.time;
+            rigidBody2D.linearVelocity = Vector2.zero;
+            rigidBody2D.gravityScale = 0;
+            rigidBody2D.linearDamping = 0;
+            Vector2 direction = new Vector2(transform.localScale.x, 0);
+
+            while (Time.time < startTime + 0.1f)
+            {
+                rigidBody2D.linearVelocity = direction.normalized * 30;
+                yield return null;
+            }
+            dashCooldownTimer = 0;
+            isDashing = false;
         }
         #endregion
 
