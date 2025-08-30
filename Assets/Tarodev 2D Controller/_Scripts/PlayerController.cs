@@ -22,6 +22,8 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+        private float attackCooldown = 1;
+        private float attackCooldownTimer;
         private float dashCooldown = 1;
         private float dashCooldownTimer;
         private bool isDashing;
@@ -56,6 +58,7 @@ namespace TarodevController
         {
             _time += Time.deltaTime;
             dashCooldownTimer += Time.deltaTime;
+            attackCooldownTimer += Time.deltaTime;
             GatherInput();
         }
 
@@ -92,6 +95,7 @@ namespace TarodevController
                 HandleGravity();
 
                 ApplyMovement();
+                if (Input.GetKeyDown(KeyCode.X) && attackCooldownTimer >= attackCooldown) Attack();
                 if (this._frameInput.Move.x > 0.001f) transform.localScale = Vector3.one;
                 else if (this._frameInput.Move.x < -0.001f) transform.localScale = new Vector3(-1, 1, 1);
                 animator.SetBool("isWalking", _frameInput.Move != Vector2.zero);
@@ -236,6 +240,12 @@ namespace TarodevController
             }
             dashCooldownTimer = 0;
             isDashing = false;
+        }
+        public void Attack()
+        {
+            animator.SetBool("isSlashing", true);
+            attackCooldown = 0;
+            animator.SetBool("isSlashing", false);
         }
         #endregion
 
