@@ -1640,6 +1640,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3861156899345987758}
     m_Modifications:
+    - target: {fileID: -7369118400321590362, guid: 1e11ef1d1fc3e3e3cac9deec5975af40, type: 3}
+      propertyPath: biscuitNumber
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2266479667225367627, guid: 1e11ef1d1fc3e3e3cac9deec5975af40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5
