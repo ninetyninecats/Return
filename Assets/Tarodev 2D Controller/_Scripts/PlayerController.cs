@@ -100,6 +100,7 @@ namespace TarodevController
                 else if (this._frameInput.Move.x < -0.001f) transform.localScale = new Vector3(-1, 1, 1);
                 animator.SetBool("isWalking", _frameInput.Move != Vector2.zero);
                 animator.SetBool("isGrounded", _grounded);
+                if (Input.GetKeyDown(KeyCode.X) && attackCooldownTimer >= attackCooldown) StartCoroutine(Attack());
             }
             if (Input.GetKeyDown(KeyCode.C)) StartCoroutine(Dash());
         }
@@ -241,10 +242,13 @@ namespace TarodevController
             dashCooldownTimer = 0;
             isDashing = false;
         }
-        public void Attack()
+        public IEnumerator Attack()
         {
             animator.SetBool("isSlashing", true);
             attackCooldown = 0;
+            transform.GetChild(0).gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            transform.GetChild(0).gameObject.SetActive(false);
             animator.SetBool("isSlashing", false);
         }
         #endregion
