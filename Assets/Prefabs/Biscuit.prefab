@@ -151,3 +151,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Biscuit
   biscuitNumber: 0
+  sound: {fileID: 8300000, guid: 99d513368d1aff6a1986b8cd85706779, type: 3}

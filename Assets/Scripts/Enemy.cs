@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float leftWalking;
+    [SerializeField] float rightWalking;
     float attackCooldown;
     float cooldownTimer;
     BoxCollider2D collider;
@@ -27,7 +29,7 @@ public class Enemy : MonoBehaviour
     private bool CanSeePlayer()
     {
         RaycastHit2D raycast = Physics2D.BoxCast(collider.bounds.center + transform.right * transform.localScale.x, Vector2.one, 0, Vector2.left, 0, 6);
-        player = raycast.collider.gameObject;
+        player = raycast.collider != null ? raycast.collider.gameObject : null;
         return raycast.collider != null;
     }
     public void TakeDamage(int damage)
@@ -35,11 +37,8 @@ public class Enemy : MonoBehaviour
         if (damage >= health) Destroy(gameObject);
         health -= damage;
     }
-    private void DamagePlayer()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CanSeePlayer())
-        {
-            player.GetComponent<PlayerStats>().TakeDamage(1);
-        }
+        collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
     }
 }

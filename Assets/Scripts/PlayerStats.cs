@@ -1,15 +1,13 @@
 using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
-using TarodevController;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     private int startingHealth = 5;
     private int currentHealth;
-    [SerializeField] private GameObject spawnRoom;
-    [SerializeField] private Vector3 spawnPoint;
+    private GameObject spawnRoom;
+    private Vector3 spawnPoint;
     [SerializeField] GameObject healthBar;
     GameObject heart0;
     GameObject heart1;
@@ -17,11 +15,11 @@ public class PlayerStats : MonoBehaviour
     GameObject heart3;
     GameObject heart4;
     private float iFramesSeconds = 1;
+    private bool startDeath;
 
     private void Awake()
     {
         currentHealth = startingHealth;
-#if UNITY_STANDALONE
         switch (SaveFile.GetSavePoint())
         {
             case 0:
@@ -29,9 +27,15 @@ public class PlayerStats : MonoBehaviour
                 spawnPoint = new Vector3(-5, 5, 0);
                 break;
             case 1:
+                spawnRoom = (GameObject)Resources.Load("Levels/Room9");
+                spawnPoint = new Vector3(-1, -2, 0);
+                break;
+            case 2:
+                spawnRoom = (GameObject)Resources.Load("Levels/Room27");
+                spawnPoint = new Vector3(1, -3, 0);
+                break;
             default: throw new NotImplementedException();
         }
-#endif
     }
     private void Start()
     {
@@ -43,11 +47,31 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
-        SetHealthBar(); 
+        SetHealthBar();
+        switch (SaveFile.GetSavePoint())
+        {
+            case 0:
+                spawnRoom = (GameObject)Resources.Load("Levels/Room0");
+                spawnPoint = new Vector3(-5, 5, 0);
+                break;
+            case 1:
+                spawnRoom = (GameObject)Resources.Load("Levels/Room9");
+                spawnPoint = new Vector3(-1, -2, 0);
+                break;
+            case 2:
+                spawnRoom = (GameObject)Resources.Load("Levels/Room27");
+                spawnPoint = new Vector3(1, -3, 0);
+                break;
+            default: throw new NotImplementedException();
+        }
+        if (!startDeath)
+        {
+            Die();
+            startDeath = true;
+        }
     }
     public void TakeDamage(int damage)
     {
-        Debug.Log("Ow");
         if (damage > currentHealth)
         {
             Die();
@@ -65,12 +89,10 @@ public class PlayerStats : MonoBehaviour
     public void Die()
     {
         LevelController.LoadLevel(spawnRoom, spawnPoint, gameObject);
-        Debug.Log("I'm dead");
         currentHealth = startingHealth;
     }
     public IEnumerator Invulnerability()
     {
-        Debug.Log("Invincible");
         Physics2D.IgnoreLayerCollision(6, 9, true);
         yield return new WaitForSeconds(iFramesSeconds);
         Physics2D.IgnoreLayerCollision(6, 9, false);

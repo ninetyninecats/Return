@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TarodevController
@@ -54,7 +55,6 @@ namespace TarodevController
         }
         private void Start()
         {
-            gameObject.GetComponent<PlayerStats>().Die();
             SaveFile.LoadFromFile();
         }
 
@@ -112,7 +112,7 @@ namespace TarodevController
                 animator.SetBool("isGrounded", _grounded);
                 if (Input.GetKeyDown(KeyCode.X) && attackCooldownTimer >= attackCooldown) StartCoroutine(Attack());
             }
-            if (Input.GetKeyDown(KeyCode.C)) StartCoroutine(Dash());
+            if (Input.GetKeyDown(KeyCode.C) && SaveFile.GetDash()) StartCoroutine(Dash());
         }
 
         #region Collisions
