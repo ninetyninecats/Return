@@ -11,7 +11,7 @@ public class SaveFile
     public static void SetSavePoint(int savePoint)
     {
         if (savePoint > 4) throw new Exception("Save point index must not exceed 4");
-        saveData = (ushort)((savePoint << 13) | (ushort)((saveData << 3) >> 3));
+        saveData = (ushort)((savePoint << 13) | (ushort)((ushort)(saveData << 3) >> 3));
     }
     public static bool GetDoubleJump()
     {
@@ -70,6 +70,7 @@ public class SaveFile
         FileStream fileStream = new FileStream(Path.Combine(Application.persistentDataPath, "return.dat"), FileMode.OpenOrCreate);
         saveData = (ushort)(fileStream.ReadByte() + (fileStream.ReadByte() << 8));
         fileStream.Close();
+        Debug.Log(saveData);    
     }
     public static ushort SetBit(ushort number, int bit, bool value)
     {

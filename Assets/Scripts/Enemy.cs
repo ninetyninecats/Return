@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float leftWalking;
+    [SerializeField] float rightWalking;
     float attackCooldown;
     float cooldownTimer;
     BoxCollider2D collider;
@@ -35,11 +37,8 @@ public class Enemy : MonoBehaviour
         if (damage >= health) Destroy(gameObject);
         health -= damage;
     }
-    private void DamagePlayer()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CanSeePlayer())
-        {
-            player.GetComponent<PlayerStats>().TakeDamage(1);
-        }
+        collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
     }
 }
