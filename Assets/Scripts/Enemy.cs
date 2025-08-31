@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] float rightWalking;
     BoxCollider2D collider;
     Animator animator;
-    GameObject player;
     bool movingLeft;
     int health;
     public void Awake()
@@ -19,20 +18,28 @@ public class Enemy : MonoBehaviour
     {
         if (movingLeft)
         {
-            if (transform.position.x > leftWalking)
+            if (transform.position.x >= leftWalking)
             {
                 transform.position = new Vector3(transform.position.x - 3 * Time.deltaTime, transform.position.y, transform.position.z);
             }
-            else movingLeft = false;
+            else
+            {
+                movingLeft = false;
+                Debug.Log("Moving right");
+            }
             
         }
         else
         {
-            if (transform.position.x < rightWalking)
+            if (transform.position.x <= rightWalking)
             {
                 transform.position = new Vector3(transform.position.x + 3 * Time.deltaTime, transform.position.y, transform.position.z);
             }
-            else movingLeft = true;
+            else
+            {
+                movingLeft = true;
+                Debug.Log("Moving left");
+            } 
         }
     }
     public void TakeDamage(int damage)
@@ -42,6 +49,7 @@ public class Enemy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Player")
         collision.gameObject.GetComponent<PlayerStats>().TakeDamage(1);
     }
 }
