@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     private bool CanSeePlayer()
     {
         RaycastHit2D raycast = Physics2D.BoxCast(collider.bounds.center + transform.right * transform.localScale.x, Vector2.one, 0, Vector2.left, 0, 6);
-        player = raycast.collider.gameObject;
+        player = raycast.collider != null ? raycast.collider.gameObject : null;
         return raycast.collider != null;
     }
     public void TakeDamage(int damage)
