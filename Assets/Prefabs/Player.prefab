@@ -385,6 +385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TarodevController.PlayerController
   _stats: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
+  titleScreen: {fileID: 0}
+  walkSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: bb3ebb0691276773d9b9cf118de62851, type: 3}
 --- !u!95 &1450892269455579733
 Animator:
   serializedVersion: 7

@@ -30,6 +30,9 @@ namespace TarodevController
         [SerializeField] GameObject titleScreen;
         private bool titleScreenActive;
 
+        [SerializeField] AudioClip jumpSound;
+        [SerializeField] AudioClip slashSound;
+
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -178,6 +181,7 @@ namespace TarodevController
 
         private void ExecuteJump(bool doubleJump)
         {
+            if (_frameInput.JumpDown    ) SoundManager.instance.PlaySound(jumpSound);
             _endedJumpEarly = false;
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
