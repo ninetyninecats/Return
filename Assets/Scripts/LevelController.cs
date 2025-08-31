@@ -1,4 +1,3 @@
-using System.Collections;
 using TarodevController;
 using UnityEngine;
 public class LevelController : MonoBehaviour

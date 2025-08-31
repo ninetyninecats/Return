@@ -1,9 +1,12 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EndGameTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject endScreen;
+    GameObject endScreen;
+    void Start()
+    {
+        endScreen = GameObject.FindWithTag("Canvas").transform.GetChild(3).gameObject;
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         endScreen.SetActive(true);
