@@ -72,6 +72,16 @@ public class SaveFile
         fileStream.Close();
         Debug.Log(saveData);    
     }
+    public static void InitializeFile()
+    {
+        FileStream fileStream = new FileStream(Path.Combine(Application.persistentDataPath, "return.dat"), FileMode.OpenOrCreate, FileAccess.ReadWrite);
+        if (fileStream.Length != 2)
+        {
+            fileStream.WriteByte(0);
+            fileStream.WriteByte(0);
+        }
+        fileStream.Close();
+    }
     public static ushort SetBit(ushort number, int bit, bool value)
     {
         if (value) return number |= (ushort)(1 << bit);

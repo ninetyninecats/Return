@@ -4,11 +4,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float leftWalking;
     [SerializeField] float rightWalking;
-    float attackCooldown;
-    float cooldownTimer;
     BoxCollider2D collider;
     Animator animator;
     GameObject player;
+    bool movingLeft;
     int health;
     public void Awake()
     {
@@ -18,19 +17,17 @@ public class Enemy : MonoBehaviour
     }
     public void Update()
     {
-        cooldownTimer += Time.deltaTime;
-
-        if (cooldownTimer >= attackCooldown && CanSeePlayer())
+        if (movingLeft)
         {
-            cooldownTimer = 0;
-            animator.SetTrigger("slash");
+            if (transform.position.x > leftWalking)
+            {
+                transform.position = new Vector3();
+            }
         }
-    }
-    private bool CanSeePlayer()
-    {
-        RaycastHit2D raycast = Physics2D.BoxCast(collider.bounds.center + transform.right * transform.localScale.x, Vector2.one, 0, Vector2.left, 0, 6);
-        player = raycast.collider != null ? raycast.collider.gameObject : null;
-        return raycast.collider != null;
+        else
+        {
+            
+        }
     }
     public void TakeDamage(int damage)
     {

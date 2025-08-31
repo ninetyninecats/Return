@@ -55,6 +55,7 @@ namespace TarodevController
         }
         private void Start()
         {
+            SaveFile.InitializeFile();
             SaveFile.LoadFromFile();
         }
 
