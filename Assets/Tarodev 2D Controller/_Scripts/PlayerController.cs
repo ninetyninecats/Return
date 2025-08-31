@@ -27,6 +27,8 @@ namespace TarodevController
         private float dashCooldown = 1;
         private float dashCooldownTimer;
         private bool isDashing;
+        [SerializeField] GameObject titleScreen;
+        private bool titleScreenActive;
 
         #region Interface
 
@@ -46,12 +48,11 @@ namespace TarodevController
             animator = GetComponent<Animator>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
-            Debug.Log(SaveFile.GetSavePoint());
-            SaveFile.SetDoubleJump(true);
-            SaveFile.SaveToFile();
         }
-        private void Start() {
+        private void Start()
+        {
             gameObject.GetComponent<PlayerStats>().Die();
+            SaveFile.LoadFromFile();
         }
 
         private void Update()
@@ -87,6 +88,12 @@ namespace TarodevController
 
         private void FixedUpdate()
         {
+            if (Input.GetKey(KeyCode.Z) && !titleScreenActive)
+            {
+                titleScreenActive = false;
+                titleScreen.SetActive(false);
+            }
+            if (titleScreenActive) return;
             CheckCollisions();
             if (!isDashing)
             {

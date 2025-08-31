@@ -8,5 +8,6 @@ public class SavePoint : MonoBehaviour
     {
         SaveFile.SetSavePoint(savePoint);
         SaveFile.SaveToFile();
+        collision.gameObject.GetComponent<PlayerStats>().Heal(5);
     }
 }
