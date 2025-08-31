@@ -1547,7 +1547,7 @@ PrefabInstance:
     - target: {fileID: -6705636473965129968, guid: 1906ea253787aaf39b1a24795b6675ec, type: 3}
       propertyPath: room
       value: 
-      objectReference: {fileID: 5717782592819514310, guid: e1f7f54150401954eb8fc8d22b595433, type: 3}
+      objectReference: {fileID: 5717782592819514310, guid: cc971de592ca16b42866d4bf5eadda25, type: 3}
     - target: {fileID: 1201863033990204497, guid: 1906ea253787aaf39b1a24795b6675ec, type: 3}
       propertyPath: m_Name
       value: Transition (1)
