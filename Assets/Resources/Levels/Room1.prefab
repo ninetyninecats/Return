@@ -1434,7 +1434,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1670,7 +1670,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1688,16 +1688,6 @@ CompositeCollider2D:
       - X: -45397600
         Y: -50982000
       - X: -35397600
-        Y: -50982000
-  - m_Collider: {fileID: 1146962366160979075}
-    m_ColliderPaths:
-    - - X: -25397602
-        Y: -40982000
-      - X: -35397600
-        Y: -40982000
-      - X: -35397600
-        Y: -50982000
-      - X: -25397602
         Y: -50982000
   - m_Collider: {fileID: 7452106597966665450}
     m_ColliderPaths:
@@ -1799,10 +1789,28 @@ CompositeCollider2D:
         Y: -50982000
       - X: 74602400
         Y: -50982000
+  - m_Collider: {fileID: 1146962366160979075}
+    m_ColliderPaths:
+    - - X: -25397602
+        Y: -41032000
+      - X: -35397600
+        Y: -41032000
+      - X: -35397600
+        Y: -50931996
+      - X: -25397602
+        Y: -50931996
   m_CompositePaths:
     m_Paths:
-    - - {x: 7.4602103, y: -5.0982}
+    - - {x: -3.5397892, y: -5.0982}
+      - {x: -3.5397305, y: -5.0931997}
+      - {x: -2.53976, y: -5.093229}
+      - {x: -2.5397308, y: -5.0982}
+      - {x: 7.46024, y: -5.0981708}
       - {x: 7.4602103, y: -4.0982}
+      - {x: -2.53976, y: -4.0982294}
+      - {x: -2.5397897, y: -4.1032}
+      - {x: -3.53976, y: -4.1031704}
+      - {x: -3.5397892, y: -4.0982}
       - {x: -4.53976, y: -4.0982294}
       - {x: -4.539731, y: -5.0982}
   m_VertexDistance: 0.0005
@@ -1896,6 +1904,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4665143435293320130}
     m_Modifications:
+    - target: {fileID: 675820007837201222, guid: db0a730f92b8d6780882af11d76023b9, type: 3}
+      propertyPath: m_CompositeOperation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5605031382797842217, guid: db0a730f92b8d6780882af11d76023b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.03976

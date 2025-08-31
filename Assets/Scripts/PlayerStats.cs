@@ -28,6 +28,7 @@ public class PlayerStats : MonoBehaviour
                 spawnRoom = (GameObject)Resources.Load("Levels/Room0");
                 spawnPoint = new Vector3(-5, 5, 0);
                 break;
+            case 1:
             default: throw new NotImplementedException();
         }
 #endif
