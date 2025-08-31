@@ -21,12 +21,18 @@ public class Enemy : MonoBehaviour
         {
             if (transform.position.x > leftWalking)
             {
-                transform.position = new Vector3();
+                transform.position = new Vector3(transform.position.x - 3 * Time.deltaTime, transform.position.y, transform.position.z);
             }
+            else movingLeft = false;
+            
         }
         else
         {
-            
+            if (transform.position.x < rightWalking)
+            {
+                transform.position = new Vector3(transform.position.x + 3 * Time.deltaTime, transform.position.y, transform.position.z);
+            }
+            else movingLeft = true;
         }
     }
     public void TakeDamage(int damage)
